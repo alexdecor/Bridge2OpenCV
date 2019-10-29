@@ -153,6 +153,7 @@
 				TargetAttributes = {
 					5CE9F2631BDF538400D6DBB3 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = R6BNCHU7B8;
 					};
 					FA61BA5023680815003BA61B = {
 						CreatedOnToolsVersion = 10.3;
@@ -316,8 +317,9 @@
 		5CE9F27B1BDF538500D6DBB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = R6BNCHU7B8;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -338,8 +340,9 @@
 		5CE9F27C1BDF538500D6DBB3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = R6BNCHU7B8;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
