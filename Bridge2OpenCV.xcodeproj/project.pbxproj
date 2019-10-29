@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		FA61BA5023680815003BA61B /* com.dm.opencv */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = FA61BA5323680816003BA61B /* Build configuration list for PBXAggregateTarget "com.dm.opencv" */;
+			buildPhases = (
+				FA61BA5423680820003BA61B /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = com.dm.opencv;
+			productName = com.dm.opencv;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		5CE9F26A1BDF538400D6DBB3 /* Bridge2OpenCV.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CE9F2691BDF538400D6DBB3 /* Bridge2OpenCV.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5CE9F2701BDF538500D6DBB3 /* Bridge2OpenCV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE9F2641BDF538400D6DBB3 /* Bridge2OpenCV.framework */; };
@@ -183,6 +197,11 @@
 					5CE9F26E1BDF538500D6DBB3 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
+					FA61BA5023680815003BA61B = {
+						CreatedOnToolsVersion = 10.3;
+						DevelopmentTeam = R6BNCHU7B8;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 5CE9F25E1BDF538400D6DBB3 /* Build configuration list for PBXProject "Bridge2OpenCV" */;
@@ -200,6 +219,7 @@
 			targets = (
 				5CE9F2631BDF538400D6DBB3 /* Bridge2OpenCV */,
 				5CE9F26E1BDF538500D6DBB3 /* Bridge2OpenCVTests */,
+				FA61BA5023680815003BA61B /* com.dm.opencv */,
 			);
 		};
 /* End PBXProject section */
@@ -238,6 +258,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh fatLib.sh";
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+		FA61BA5423680820003BA61B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\nif [ -z \"$XCODE_VERSION_CORRECT\" ]\nthen\nexport SUDO_ASKPASS=\"${PROJECT_DIR}/../scripts/askpass.sh\"\nfi\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\n# add BITCODE_GENERATION_MODE=bitcode to support bitcode\necho \"Building for devices\"\nxcodebuild BITCODE_GENERATION_MODE=bitcode -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphoneos ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# add BITCODE_GENERATION_MODE=marker to support bitcode\necho \"Building for simulators\"\nxcodebuild BITCODE_GENERATION_MODE=bitcode -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\necho \"Copying framework structure\"\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\necho \"Copying simulator Swift modules\"\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\"\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\nfi\n\n# Step 4. Create new combined simulator and device swift header file\nCOMBINED_PATH=\"${BUILD_DIR}/iOS + iOS Simulator/${PROJECT_NAME}-Swift.h\"\nmkdir -p \"${BUILD_DIR}/iOS + iOS Simulator/\"\ntouch \"${COMBINED_PATH}\"\necho \"#if TARGET_OS_SIMULATOR\" >> \"${COMBINED_PATH}\"\ncat \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Headers/${PROJECT_NAME}-Swift.h\" >> \"${COMBINED_PATH}\"\necho \"#else\" >> \"${COMBINED_PATH}\"\necho \"//Start of iphoneos\" >> \"${COMBINED_PATH}\"\ncat \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/Headers/${PROJECT_NAME}-Swift.h\" >> \"${COMBINED_PATH}\"\necho \"#endif\" >> \"${COMBINED_PATH}\"\n\n\n# Step 5. Create universal binary file using lipo and place the combined executable in the copied framework directory\necho \"Creating universal binary using lipo\"\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n\n# Step 6. Overwrite generated -Swift.h file with combined -Swift.h file -- Kknown Issue with XCode 10.2 https://developer.apple.com/documentation/xcode_release_notes/xcode_10_2_release_notes#3141454\ncat \"$COMBINED_PATH\" > \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Headers/${PROJECT_NAME}-Swift.h\" \n\n# Step 7. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}/../package/\"\n\n# Step 8. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}/../package/\"\n\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -433,6 +470,24 @@
 			};
 			name = Release;
 		};
+		FA61BA5123680816003BA61B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R6BNCHU7B8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FA61BA5223680816003BA61B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R6BNCHU7B8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -459,6 +514,15 @@
 			buildConfigurations = (
 				5CE9F27E1BDF538500D6DBB3 /* Debug */,
 				5CE9F27F1BDF538500D6DBB3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA61BA5323680816003BA61B /* Build configuration list for PBXAggregateTarget "com.dm.opencv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA61BA5123680816003BA61B /* Debug */,
+				FA61BA5223680816003BA61B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
