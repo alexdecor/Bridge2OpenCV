@@ -22,7 +22,6 @@
 
 /* Begin PBXBuildFile section */
 		5CE9F26A1BDF538400D6DBB3 /* Bridge2OpenCV.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CE9F2691BDF538400D6DBB3 /* Bridge2OpenCV.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5CE9F2701BDF538500D6DBB3 /* Bridge2OpenCV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE9F2641BDF538400D6DBB3 /* Bridge2OpenCV.framework */; };
 		5CE9F2871BDF54B100D6DBB3 /* Bridge2OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9F2801BDF54B100D6DBB3 /* Bridge2OpenCV.mm */; };
 		5CE9F2881BDF54B100D6DBB3 /* CloverGrabCut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9F2811BDF54B100D6DBB3 /* CloverGrabCut.cpp */; };
 		5CE9F2891BDF54B100D6DBB3 /* CloverGrabCut.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CE9F2821BDF54B100D6DBB3 /* CloverGrabCut.h */; };
@@ -35,21 +34,10 @@
 		5CE9F29A1BDF5A7300D6DBB3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE9F2961BDF584800D6DBB3 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		5CE9F2711BDF538500D6DBB3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5CE9F25B1BDF538400D6DBB3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5CE9F2631BDF538400D6DBB3;
-			remoteInfo = Bridge2OpenCV;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		5CE9F2641BDF538400D6DBB3 /* Bridge2OpenCV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bridge2OpenCV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE9F2681BDF538400D6DBB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CE9F2691BDF538400D6DBB3 /* Bridge2OpenCV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge2OpenCV.h; sourceTree = "<group>"; };
-		5CE9F26F1BDF538500D6DBB3 /* Bridge2OpenCVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Bridge2OpenCVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE9F2801BDF54B100D6DBB3 /* Bridge2OpenCV.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bridge2OpenCV.mm; sourceTree = "<group>"; };
 		5CE9F2811BDF54B100D6DBB3 /* CloverGrabCut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloverGrabCut.cpp; sourceTree = "<group>"; };
 		5CE9F2821BDF54B100D6DBB3 /* CloverGrabCut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloverGrabCut.h; sourceTree = "<group>"; };
@@ -73,14 +61,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5CE9F26C1BDF538500D6DBB3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5CE9F2701BDF538500D6DBB3 /* Bridge2OpenCV.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -96,7 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				5CE9F2641BDF538400D6DBB3 /* Bridge2OpenCV.framework */,
-				5CE9F26F1BDF538500D6DBB3 /* Bridge2OpenCVTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,7 +132,6 @@
 				5CE9F2601BDF538400D6DBB3 /* Frameworks */,
 				5CE9F2611BDF538400D6DBB3 /* Headers */,
 				5CE9F2621BDF538400D6DBB3 /* Resources */,
-				FA5908F223678BE200B98AA1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -163,24 +141,6 @@
 			productName = Bridge2OpenCV;
 			productReference = 5CE9F2641BDF538400D6DBB3 /* Bridge2OpenCV.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		5CE9F26E1BDF538500D6DBB3 /* Bridge2OpenCVTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5CE9F27D1BDF538500D6DBB3 /* Build configuration list for PBXNativeTarget "Bridge2OpenCVTests" */;
-			buildPhases = (
-				5CE9F26B1BDF538500D6DBB3 /* Sources */,
-				5CE9F26C1BDF538500D6DBB3 /* Frameworks */,
-				5CE9F26D1BDF538500D6DBB3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5CE9F2721BDF538500D6DBB3 /* PBXTargetDependency */,
-			);
-			name = Bridge2OpenCVTests;
-			productName = Bridge2OpenCVTests;
-			productReference = 5CE9F26F1BDF538500D6DBB3 /* Bridge2OpenCVTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -192,9 +152,6 @@
 				ORGANIZATIONNAME = lixu;
 				TargetAttributes = {
 					5CE9F2631BDF538400D6DBB3 = {
-						CreatedOnToolsVersion = 6.3.1;
-					};
-					5CE9F26E1BDF538500D6DBB3 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
 					FA61BA5023680815003BA61B = {
@@ -218,7 +175,6 @@
 			projectRoot = "";
 			targets = (
 				5CE9F2631BDF538400D6DBB3 /* Bridge2OpenCV */,
-				5CE9F26E1BDF538500D6DBB3 /* Bridge2OpenCVTests */,
 				FA61BA5023680815003BA61B /* com.dm.opencv */,
 			);
 		};
@@ -232,33 +188,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5CE9F26D1BDF538500D6DBB3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		FA5908F223678BE200B98AA1 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/bin/sh fatLib.sh";
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
-		};
 		FA61BA5423680820003BA61B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -290,22 +222,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5CE9F26B1BDF538500D6DBB3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5CE9F2721BDF538500D6DBB3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5CE9F2631BDF538400D6DBB3 /* Bridge2OpenCV */;
-			targetProxy = 5CE9F2711BDF538500D6DBB3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5CE9F2781BDF538500D6DBB3 /* Debug */ = {
@@ -345,7 +262,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -386,7 +303,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -440,36 +357,6 @@
 			};
 			name = Release;
 		};
-		5CE9F27E1BDF538500D6DBB3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Bridge2OpenCVTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		5CE9F27F1BDF538500D6DBB3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Bridge2OpenCVTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		FA61BA5123680816003BA61B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -498,7 +385,7 @@
 				5CE9F2791BDF538500D6DBB3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		5CE9F27A1BDF538500D6DBB3 /* Build configuration list for PBXNativeTarget "Bridge2OpenCV" */ = {
 			isa = XCConfigurationList;
@@ -507,16 +394,7 @@
 				5CE9F27C1BDF538500D6DBB3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5CE9F27D1BDF538500D6DBB3 /* Build configuration list for PBXNativeTarget "Bridge2OpenCVTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5CE9F27E1BDF538500D6DBB3 /* Debug */,
-				5CE9F27F1BDF538500D6DBB3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		FA61BA5323680816003BA61B /* Build configuration list for PBXAggregateTarget "com.dm.opencv" */ = {
 			isa = XCConfigurationList;
@@ -525,7 +403,7 @@
 				FA61BA5223680816003BA61B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
